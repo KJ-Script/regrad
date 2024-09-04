@@ -60,4 +60,9 @@ class Tensor:
 
 
     def __sigmoid__(self):
-        pass
+        n = self.data
+        t = 1 / 1 + math.exp( -1 * n )
+
+
+        def _backward():
+            pass
