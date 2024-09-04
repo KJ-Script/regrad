@@ -1,3 +1,6 @@
+import math
+
+
 class Tensor:
     
 
@@ -39,3 +42,22 @@ class Tensor:
         out._backward = _backward
         
         return out
+    
+    def __tanh__(self):
+        n = self.data
+        t= math.exp(2*n) - 1 / math.exp(2*n) + 1
+        out = Tensor(t)
+        
+
+        def _backward():
+            self.grad += (1 - t**2) * out.grad
+
+        out._backward = _backward
+
+
+        return out
+    
+
+
+    def __sigmoid__(self):
+        pass
